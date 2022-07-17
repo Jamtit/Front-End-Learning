@@ -2,58 +2,66 @@
 <html>
   <head>
     <title>Login</title>
-    <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/general.css">
     <link rel="stylesheet" href="styles/login.css">
+    <link rel="stylesheet" href="styles/desgin.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   </head>
   <body>
-    <div class="main-container">
+    <main class="main-container">
       <div class="login-container">
-        <div class="log-in-info-container">
-          <p class="log-in-title">Log in</p>
-          <p class="log-in-infotext"> Welcome to Caramel Cloud. Please put your login credentials below to start using the app.</p>
-        </div>
-        <div class="login-credential-container">
-          <div class="email-input">
-            <p class="input-titles">E-mail</p>
-            <input class="bar-style" type="email" placeholder="Email">
+        <div class="upper-login-container">
+          <div class="login-title-welcometext">
+            <h3>Log in</h3>
+            <p> Welcome to Caramel Cloud. Please put your login credentials below to start using the app</p>
           </div>
-          <div class="password-input">
-            <p class="input-titles">Password</p>
-            <input class="bar-style" type="password" placeholder="Password">
+
+          <div class="login-input-box">
+            <p>E-mail</p>
+            <input class="input-box" type="email">
           </div>
-          <p class="forgot-password">Forgot password?</p>
-        </div>
-        <div class="other-container">
-          <div class="remember-me-container">
-            <input type="checkbox">
-            Remember me
+
+          <div class="login-input-box">
+            <p>Password</p>
+            <input class="input-box" type="password">
           </div>
-          <div>
-            <button>
-              Log in
-            </button>
+
+          <div class="forgot-password">
+            <p>Forgot password?</p>
           </div>
+
         </div>
-        <div class="dont-have-account-container">
-          <p class="dont-have-account-info">Don't have an account? <span class="dont-have-account-sign-up">Sign up</span></p>
+
+        <div class="lower-login-container">
+          <div class="first-grid">
+            <div class="remember-me">
+              <input type="checkbox"> 
+              <p>Remember me</p>
+            </div>
+
+            <div class="log-in-button-container">
+              <button>Log in</button>
+            </div>
+          </div>
+
+          <div class="dont-have-account-container">
+            <p>Don't have an account? <span>Sign up</span></p>
+          </div>
+
         </div>
+
       </div>
       <div class="design-container">
-        <div>
-          Photo
+        <img class="carousel-image" src="/images/ControlHub.c38e37fd.png">
+        <div class="carousel-text-container">
+          <p class="carousel-title">Meet our visual builder</p>
+          <p class="carousel-info">Caramel Cloud's visual integration builder lets you build integrations in real time in a beautiful, intuitive way</p>
         </div>
-        <div>
-          Info
-        </div>
-        <div>
-          arrows
-        </div>
+        Design
       </div>
-    </div>
+    </main>
   </body>
 </html>

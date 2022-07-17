@@ -1,6 +1,20 @@
-p {
-  margin: 0px;
+body{
+  background-color: lightgray;
+}
+
+.login-title-welcometext h3, p{
   font-family: Roboto;
-  font-size: 10x;
-  margin-bottom: 10px;
+}
+
+.login-title-welcometext h3 {
+  font-size: 16px;
+}
+.main-container {
+  width: 1000px;
+  background-color: lightblue;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.15);
+
+  border-radius: 5px;
 }
