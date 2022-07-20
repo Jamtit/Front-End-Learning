@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 63.1 (92452) - https://sketch.com -->
+    <title>Left</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Login" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Forgot_password@2x" transform="translate(-834.000000, -770.000000)">
+            <g id="Illustration" transform="translate(735.000000, 0.000000)">
+                <g id="Info" transform="translate(98.000000, 644.000000)">
+                    <g id="Dots" transform="translate(0.000000, 126.000000)">
+                        <g id="Arrows">
+                            <g id="Left">
+                                <circle id="Oval" fill="#FFFFFF" cx="13" cy="12" r="12"></circle>
+                                <g id="icon/arrow/left">
+                                    <g id="arrow-left-s-line">
+                                        <polygon id="Path" points="0 0 24 0 24 24 0 24"></polygon>
+                                        <polygon id="Path" fill="#571158" points="10.828 12 15.778 16.95 14.364 18.364 8 12 14.364 5.636 15.778 7.05"></polygon>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
