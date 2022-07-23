@@ -1,6 +1,13 @@
+:root {
+  --purple: rgb(109, 1, 109);
+  --white: rgb(255, 255, 255);
+  --blackshadow: rgba(0, 0, 0, 0.15);
+  --lightgray: rgb(211, 211, 211);
+}
+
 p, h3{
   font-family: Roboto, Arial;
 }
 body{
-  background-color: lightgray;
+  background-color: var(--lightgray);
 }

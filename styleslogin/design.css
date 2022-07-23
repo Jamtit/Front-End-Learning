@@ -1,5 +1,5 @@
 .right-container {
-  background-color: purple;
+  background-color: var(--purple);
 
   display: grid;
 
@@ -42,7 +42,7 @@
 }
 
 .carousel-title, .carousel-description{
-  color: white;
+  color: var(--white);
 }
 
 .carousel-title{
@@ -69,7 +69,7 @@
   height: 4px;
   width: 4px;
   margin: 2px;
-  background-color: white;
+  background-color: var(--white);
   border-radius: 50%;
   display: inline-block;
 }
