@@ -1,0 +1,97 @@
+@use '../utils';
+
+.login__form{
+
+  width: 90%;
+  position: relative;
+  left: 1.25rem;
+  top: 15rem;
+
+  @include utils.breakpoint(large){
+    width: 80%;
+    left: 5rem;
+    top: 7.5rem;
+  }
+
+
+  h3{
+    font-size: 1.125rem;
+  }
+
+  p{
+    font-size: .875rem;
+    padding: 0;
+  }
+
+  #forgot{
+
+    color: var(--secondary);
+
+    position: relative;
+    top: .625rem;
+    text-align: end;
+  }
+
+  #forgot:hover{
+    cursor: pointer;
+  }
+
+  input[type=email], input[type=password]{
+    border: 1px solid var(--secondary);
+    border-radius: 4px;
+    width: 12.5rem;
+  }
+
+  input[type=email]:focus, input[type=password]{
+    outline: none;
+  }
+  input[type=checkbox]:checked{
+    accent-color: purple;
+  }
+
+  label[for=mail], label[for=pas]{
+    font-weight: 500;
+  }
+
+  &__remember{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &__box{
+      position: relative;
+      left: .938rem;
+    }
+  }
+
+
+  .login__form--upper{
+    border-bottom: 1px solid var(--bottom-line);
+    width: 100%;
+    left: 0;
+    top: 1.25rem;
+    padding-bottom: 1.25rem;
+    #credentials{
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  .login__form--lower{
+
+    width: 100%;
+    top: 2.25rem;
+    left: 0;
+    p{
+      text-align: center;
+
+      span{
+        color: var(--secondary);
+      }
+
+      span:hover{
+        cursor: pointer;
+      }
+    }
+  }
+}

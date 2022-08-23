@@ -1,0 +1,68 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"> 
+
+  <link rel="stylesheet" href="../dist/style.css">
+  <title>Login</title>
+</head>
+<body>
+  <div class="grid">
+    <main class="grid__login">
+      <div class="grid__login__logo">
+        <img id="logo" src="../app/images/jetic-logo.55b8bab9.svg" alt="Logo">
+      </div>
+
+      <form action="" class="login__form">
+        <h3>Log in</h3>
+        <p>Welcome to Caramel Cloud. Please put your login credentials below to start using the app.</p>
+        <section class="login__form login__form--upper">
+          <p id="credentials">
+            <label for="mail"><span>E-mail</span></label>
+            <input type="email" name="user-email" id="mail">
+          </p>
+          <p id="credentials">
+            <label for="pas">Password </label>
+            <input type="password" name="password" id="pas">
+          </p>
+          <p id="forgot">Forgot password?</p>
+        </section>
+        <section class="login__form login__form--lower">
+          <div class="login__form__remember">
+            <p class="login__form__remember__box">
+              <input type="checkbox" name="remember-me" id="rmb-me">
+              <label for="rmb-me">Remember me</label>
+            </p>
+            <button class="button__login">Log in</button>
+          </div>
+          <p>Don't have an account? <span>Sign up!</span></p>
+        </section>
+      </form>
+      
+    </main>
+    
+    <aside class="grid__sideinfo">
+      <img id="carousel" src="../app/images/ExchangeHub.5989fe89.png" alt="Carousel-Main">
+      <div class="grid__sideinfo__text">
+        <h3>Meet our visual builder</h3>
+        <p>Caramel Cloud's visual integration builder lets you build integrations in real time in a beautiful, intuitive way</p>
+      </div>
+      <div class="grid__sideinfo__navigation">
+        <img src="../app/images/arrow-left.a969313f.svg" alt="Left Arrow">
+        <div>
+          <div class="stepper-dot"></div>
+          <div class="stepper-dot"></div>
+          <div class="stepper-dot"></div>
+        </div>
+        <img src="../app/images/arrow-right.e4e6f570.svg" alt="Right Arrow">
+        
+      </div>
+    </aside>
+  </div>
+</body>
+</html>

@@ -1,0 +1,16 @@
+@use '../utils';
+html{
+  box-sizing: border-box;
+}
+
+body{
+  margin: 0;
+  padding: 0;
+  background-color: var(--primary);
+  font-family: utils.$main-font;
+
+  @include utils.breakpoint(large){
+
+    background-color: var(--background-color);
+  }
+}
