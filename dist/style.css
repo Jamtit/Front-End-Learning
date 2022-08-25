@@ -2,8 +2,9 @@
   --background-color: rgb(182, 182, 182);
   --primary: rgb(255, 255, 255);
   --secondary: rgb(104, 6, 104);
-  --valid-input: rgb(17, 129, 17);
   --bottom-line: rgb(228, 228, 228);
+  --success:rgb(17, 129, 17);
+  --error: rgb(192, 15, 15);
 }
 
 html {
@@ -136,20 +137,6 @@ body {
 .login__form #forgot:hover {
   cursor: pointer;
 }
-.login__form input[type=email], .login__form input[type=password] {
-  border: 1px solid var(--secondary);
-  border-radius: 4px;
-  width: 12.5rem;
-}
-.login__form input[type=email]:focus, .login__form input[type=password] {
-  outline: none;
-}
-.login__form input[type=checkbox]:checked {
-  accent-color: purple;
-}
-.login__form label[for=mail], .login__form label[for=pas] {
-  font-weight: 500;
-}
 .login__form__remember {
   display: flex;
   justify-content: space-between;
@@ -166,9 +153,44 @@ body {
   top: 1.25rem;
   padding-bottom: 1.25rem;
 }
-.login__form .login__form--upper #credentials {
-  display: flex;
-  justify-content: space-between;
+.login__form .login__form--upper .credentials, .login__form .login__form--upper .credentials--error, .login__form .login__form--upper .credentials--success {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+}
+.login__form .login__form--upper .credentials input[type=email], .login__form .login__form--upper .credentials--error input[type=email], .login__form .login__form--upper .credentials--success input[type=email], .login__form .login__form--upper .credentials input[type=password], .login__form .login__form--upper .credentials--error input[type=password], .login__form .login__form--upper .credentials--success input[type=password] {
+  border: 1px solid var(--secondary);
+  border-radius: 4px;
+  width: 12.5rem;
+  justify-self: flex-end;
+}
+.login__form .login__form--upper .credentials input[type=email]:focus, .login__form .login__form--upper .credentials--error input[type=email]:focus, .login__form .login__form--upper .credentials--success input[type=email]:focus, .login__form .login__form--upper .credentials input[type=password], .login__form .login__form--upper .credentials--error input[type=password], .login__form .login__form--upper .credentials--success input[type=password] {
+  outline: none;
+}
+.login__form .login__form--upper .credentials input[type=checkbox]:checked, .login__form .login__form--upper .credentials--error input[type=checkbox]:checked, .login__form .login__form--upper .credentials--success input[type=checkbox]:checked {
+  accent-color: purple;
+}
+.login__form .login__form--upper .credentials label[for=mail], .login__form .login__form--upper .credentials--error label[for=mail], .login__form .login__form--upper .credentials--success label[for=mail], .login__form .login__form--upper .credentials label[for=pas], .login__form .login__form--upper .credentials--error label[for=pas], .login__form .login__form--upper .credentials--success label[for=pas] {
+  font-weight: 500;
+}
+.login__form .login__form--upper .credentials .msg_box, .login__form .login__form--upper .credentials--error .msg_box, .login__form .login__form--upper .credentials--success .msg_box {
+  text-align: end;
+  color: var(--error);
+  grid-column: 2;
+  margin-block: 8px;
+  visibility: hidden;
+}
+.login__form .login__form--upper .credentials--success input[type=email], .login__form .login__form--upper .credentials--success input[type=password] {
+  border-color: var(--success);
+}
+.login__form .login__form--upper .credentials--error label[for=pas] {
+  color: black;
+}
+.login__form .login__form--upper .credentials--error input[type=email], .login__form .login__form--upper .credentials--error input[type=password] {
+  border-color: var(--error);
+}
+.login__form .login__form--upper .credentials--error .msg_box {
+  visibility: visible;
 }
 .login__form .login__form--lower {
   width: 100%;
