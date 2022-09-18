@@ -1,68 +1,80 @@
-let users = [];
 const form = document.getElementById('form__login');
 const email = document.getElementById('mail');
 const pass = document.getElementById('pass');
 const loginButton = document.getElementsByClassName("button__login");
+var userData;
 
 
-const getUserData = () => {
-  let user = {
+// const getUserData = () =>{
+//   return {
+//     email: document.getElementById('mail').value,
+//     password: document.getElementById('pass').value,
+//   }
+// };
+
+
+function getUserData (){
+  return {
     email: document.getElementById('mail').value,
     password: document.getElementById('pass').value,
   }
-  users.push(user);
-  console.table(user);
-}
+};
 
 const errorMessage = (input, message) =>{
   let credentialElement = input.parentElement;
   let small = credentialElement.querySelector('small');
   small.innerText = message;
-
-  credentialElement.className = 'credentials--error';
+  return credentialElement.className = 'credentials--error';
 }
 
 const successMessage = (input) =>{
   let credentialElement = input.parentElement;
-
-  credentialElement.className = 'credentials--success';
+  return credentialElement.className = 'credentials--success';
 }
 
 
 form.addEventListener('submit', (e) =>{
   let validated = false;
   e.preventDefault();
-  if(validated === false){
+
+  if(!validated){
     validated = checkInputs();
     console.log(`Validation: ${validated}`);
   }
-  else loginButton.onSubmit = getUserData();
+  else {
+    loginButton.onSubmit= getUserData();
+  }
 
 });
-
-let checkInputs = () =>{
+const checkInputs = () =>{
 
   let emailValue = email.value.trim();
   let passValue = pass.value.trim();
-  let validationRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-  let validGmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@gmail.com/;
-  let validYahoo = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@yahoo.com/;
-  let validOutlook1 = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@outlook.com/;
-  let validOutlook2 = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@hotmail.com/;
-  let validProton1 = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@protonmail.com/;
-  let validProton2 = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@pm.com/;
+
+  const validationRegexes = {
+    generalRegex: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+    validGmail: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@gmail.com/,
+    validYahoo: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@yahoo.com/,
+    validOutlook1: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@outlook.com/,
+    validOutlook2: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@hotmail.com/,
+    validProton1: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@protonmail.com/,
+    validProton2: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@pm.com/
+  }
   
-  if(emailValue === ''){
+  if(!emailValue){
     errorMessage(email, 'Email cannot be blank!');
   }
-  else if(emailValue.match(validGmail) || emailValue.match(validYahoo) || (emailValue.match(validOutlook1) || emailValue.match(validOutlook2)) || (emailValue.match(validProton1) || emailValue.match(validProton2))){
+  else if(emailValue.match(validationRegexes['validGmail']) || emailValue.match(validationRegexes['validYahoo']) 
+  || (emailValue.match(validationRegexes['validOutlook1']) || emailValue.match(validationRegexes['validOutlook2'])) 
+  || (emailValue.match(validationRegexes['validProton1']) || emailValue.match(validationRegexes['validProton2']))){
     successMessage(email);
   }
   else{
     errorMessage(email, 'Email is invalid!');
   }
 
-  if(passValue === ''){
+
+  if(!passValue){
     errorMessage(pass, 'Password cannot be blank!')
   }
   else if (passValue.length <= 6){
