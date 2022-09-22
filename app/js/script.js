@@ -1,16 +1,9 @@
 const form = document.getElementById('form__login');
 const email = document.getElementById('mail');
 const pass = document.getElementById('pass');
+//const loginButton = document.getElementById('login__button');
 const loginButton = document.getElementsByClassName("button__login");
 var userData;
-
-
-// const getUserData = () =>{
-//   return {
-//     email: document.getElementById('mail').value,
-//     password: document.getElementById('pass').value,
-//   }
-// };
 
 
 function getUserData (){
@@ -20,33 +13,40 @@ function getUserData (){
   }
 };
 
-const errorMessage = (input, message) =>{
+// const getUserData = () =>{
+//   return {
+//     email: document.getElementById('mail').value,
+//     password: document.getElementById('pass').value,
+//   }
+// };
+
+
+function errorMessage (input, message){
   let credentialElement = input.parentElement;
   let small = credentialElement.querySelector('small');
   small.innerText = message;
   return credentialElement.className = 'credentials--error';
 }
 
-const successMessage = (input) =>{
+// const errorMessage = (input, message) =>{
+//   let credentialElement = input.parentElement;
+//   let small = credentialElement.querySelector('small');
+//   small.innerText = message;
+//   return credentialElement.className = 'credentials--error';
+// }
+
+
+function successMessage (input){
   let credentialElement = input.parentElement;
   return credentialElement.className = 'credentials--success';
 }
 
+// const successMessage = (input) =>{
+//   let credentialElement = input.parentElement;
+//   return credentialElement.className = 'credentials--success';
+// }
 
-form.addEventListener('submit', (e) =>{
-  let validated = false;
-  e.preventDefault();
-
-  if(!validated){
-    validated = checkInputs();
-    console.log(`Validation: ${validated}`);
-  }
-  else {
-    loginButton.onSubmit= getUserData();
-  }
-
-});
-const checkInputs = () =>{
+function checkInputs (){
 
   let emailValue = email.value.trim();
   let passValue = pass.value.trim();
@@ -96,3 +96,18 @@ const checkInputs = () =>{
   if(email.parentElement.className === 'credentials--success' && pass.parentElement.className === 'credentials--success') return true;
   else return false;
 }
+
+
+form.addEventListener('submit', (e) =>{
+  let validated = checkInputs();
+  e.preventDefault();
+
+  if(validated){
+    userData = loginButton.onsubmit = getUserData()
+    console.table(userData);
+  }
+  else{
+    console.log('One of inputs is incorrect.');
+  }
+
+});
