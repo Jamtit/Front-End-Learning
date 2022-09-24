@@ -35,7 +35,7 @@ function checkEmail(value){
     validProton1: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@protonmail.com/,
     validProton2: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@pm.com/
   }
-  
+
   if(!value){
     return setMessage(email,'Email cannot be blank!', true);
   }
@@ -45,7 +45,8 @@ function checkEmail(value){
   || (value.match(validGmails['validProton1']) || value.match(validGmails['validProton2']))){
     return setMessage(email,'', false);
   }
-  else return setMessage(email,'Email is invalid!', true);
+  
+  return setMessage(email,'Email is invalid!', true);
 }
 
 function checkPassword(value){
