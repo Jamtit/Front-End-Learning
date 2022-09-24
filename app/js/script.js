@@ -13,10 +13,9 @@ function getUserData (){
 };
 
 function setMessage(target, message, isError){
-  let credentialElement = target.parentElement;
+  const credentialElement = target.parentElement;
   if(isError){
-    let small = credentialElement.querySelector('small');
-    small.innerText = message;
+    credentialElement.querySelector('small').innerText = message;
     credentialElement.className = 'credentials--error';
   }
   else{
@@ -25,12 +24,9 @@ function setMessage(target, message, isError){
   
 };
 
-function checkInputs (){
+function checkEmail(value){
 
-  let emailValue = email.value.trim();
-  let passValue = pass.value.trim();
-
-  const validationRegexes = {
+  const validGmails = {
     generalRegex: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
     validGmail: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@gmail.com/,
     validYahoo: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@yahoo.com/,
@@ -40,53 +36,67 @@ function checkInputs (){
     validProton2: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@pm.com/
   }
   
-  if(!emailValue){
-    setMessage(email,'Email cannot be blank!', true)
-  }
-  else if(emailValue.match(validationRegexes['validGmail']) || emailValue.match(validationRegexes['validYahoo']) 
-  || (emailValue.match(validationRegexes['validOutlook1']) || emailValue.match(validationRegexes['validOutlook2'])) 
-  || (emailValue.match(validationRegexes['validProton1']) || emailValue.match(validationRegexes['validProton2']))){
-    setMessage(email,'', false)
-  }
-  else{
-    setMessage(email,'Email is invalid!', true)
+  if(!value){
+    return setMessage(email,'Email cannot be blank!', true);
   }
 
+  if(value.match(validGmails['validGmail']) || value.match(validGmails['validYahoo']) 
+  || (value.match(validGmails['validOutlook1']) || value.match(validGmails['validOutlook2'])) 
+  || (value.match(validGmails['validProton1']) || value.match(validGmails['validProton2']))){
+    return setMessage(email,'', false);
+  }
+  else return setMessage(email,'Email is invalid!', true);
+}
 
-  if(!passValue){
-    setMessage(pass, 'Password cannot be blank!', true)
-  }
-  else if (passValue.length <= 6){
-    setMessage(pass, 'Password must be longer than 6 characters', true)
-  }
-  else if(!passValue.match(/[A-Z]/)){
-    setMessage(pass, 'Password must contain capital letters', true)
-  }
-  else if(!passValue.match(/[0-9]/)){
-    setMessage(pass, 'Password must contain numbers.', true)
-  }
-  else if(!passValue.match(/[.!#$%&'*+/=?^_`{|}~-]/)){
-    setMessage(pass, 'Password must contain special symbols!', true)
-  }
-  else{
-    setMessage(pass, '', false)
+function checkPassword(value){
+
+  if(!value){
+    return setMessage(pass, 'Password cannot be blank!', true)
   }
 
+  if (value.length <= 6){
+    return setMessage(pass, 'Password must be longer than 6 characters', true)
+  }
+
+  if(!value.match(/[A-Z]/)){
+    return setMessage(pass, 'Password must contain capital letters', true)
+  }
+
+  if(!value.match(/[0-9]/)){
+    return setMessage(pass, 'Password must contain numbers.', true)
+  }
+
+  if(!value.match(/[.!#$%&'*+/=?^_`{|}~-]/)){
+    return setMessage(pass, 'Password must contain special symbols!', true)
+  }
+    
+  return setMessage(pass, '', false)
+
+}
+
+function checkInputs (){
+
+  const emailValue = email.value.trim();
+  const passValue = pass.value.trim();
+  
+  checkEmail(emailValue);
+  checkPassword(passValue);
+  
+}
+
+function validationClarification (){
   if(email.parentElement.className === 'credentials--success' && pass.parentElement.className === 'credentials--success') return true;
-  else return false;
+  return false;
 }
 
 
 form.addEventListener('submit', (e) =>{
-  let validated = checkInputs();
   e.preventDefault();
+  checkInputs();
+  let validation = validationClarification();
 
-  if(validated){
-    userData = loginButton.onsubmit = getUserData()
+  if(validation){
+    userData = loginButton.onsubmit = getUserData();
     console.table(userData);
   }
-  else{
-    console.log('One of inputs is incorrect.');
-  }
-
 });
