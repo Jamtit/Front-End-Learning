@@ -12,9 +12,9 @@ function getUserData (){
   }
 };
 
-function setMessage(target, message, isError){
+function setMessage(target, message, valid){
   const credentialElement = target.parentElement;
-  if(isError){
+  if(!valid){
     credentialElement.querySelector('small').innerText = message;
     credentialElement.className = 'credentials--error';
   }
@@ -26,7 +26,7 @@ function setMessage(target, message, isError){
 
 function checkEmail(value){
 
-  const validGmails = {
+  const validEmails = {
     generalRegex: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
     validGmail: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@gmail.com/,
     validYahoo: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@yahoo.com/,
@@ -36,67 +36,78 @@ function checkEmail(value){
     validProton2: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@pm.com/
   }
 
+  const validation = {message: '', isValid: false};
+
   if(!value){
-    return setMessage(email,'Email cannot be blank!', true);
+    validation.message = 'Email cannot be blank!';
+    return validation;
   }
 
-  if(value.match(validGmails['validGmail']) || value.match(validGmails['validYahoo']) 
-  || (value.match(validGmails['validOutlook1']) || value.match(validGmails['validOutlook2'])) 
-  || (value.match(validGmails['validProton1']) || value.match(validGmails['validProton2']))){
-    return setMessage(email,'', false);
+  if(value.match(validEmails['validGmail']) || value.match(validEmails['validYahoo']) 
+  || (value.match(validEmails['validOutlook1']) || value.match(validEmails['validOutlook2'])) 
+  || (value.match(validEmails['validProton1']) || value.match(validEmails['validProton2']))){
+    validation.isValid = true;
+    return validation;
   }
-  
-  return setMessage(email,'Email is invalid!', true);
+
+
+  validation.message = 'Email is invalid!';
+  return validation;
 }
 
 function checkPassword(value){
+  const validation = {message: '', isValid: false}
 
   if(!value){
-    return setMessage(pass, 'Password cannot be blank!', true)
+    validation.message = 'Password cannot be blank!';
+    return validation;
   }
 
   if (value.length <= 6){
-    return setMessage(pass, 'Password must be longer than 6 characters', true)
+    validation.message = 'Password must be longer than 6 characters';
+    return validation;
   }
 
   if(!value.match(/[A-Z]/)){
-    return setMessage(pass, 'Password must contain capital letters', true)
+    validation.message = 'Password must containe capital letters';
+    return validation;
   }
 
   if(!value.match(/[0-9]/)){
-    return setMessage(pass, 'Password must contain numbers.', true)
+    validation.message = 'Password must contain numbers';
+    return validation;
   }
 
   if(!value.match(/[.!#$%&'*+/=?^_`{|}~-]/)){
-    return setMessage(pass, 'Password must contain special symbols!', true)
+    validation.message = 'Password must contain special symbols';
+    return validation;
   }
-    
-  return setMessage(pass, '', false)
+
+  validation.isValid = true;
+  return validation;
 
 }
 
 function checkInputs (){
 
-  const emailValue = email.value.trim();
-  const passValue = pass.value.trim();
-  
-  checkEmail(emailValue);
-  checkPassword(passValue);
-  
-}
+  const emailCheck = checkEmail(email.value.trim());
+  const passwordCheck = checkPassword(pass.value.trim());
 
-function validationClarification (){
-  if(email.parentElement.className === 'credentials--success' && pass.parentElement.className === 'credentials--success') return true;
+  if((!emailCheck.isValid || !passwordCheck.isValid) || (emailCheck.isValid && passwordCheck.isValid)){
+    setMessage(email, emailCheck.message, emailCheck.isValid);
+    setMessage(pass, passwordCheck.message, passwordCheck.isValid);
+  }
+
+  if(emailCheck.isValid && passwordCheck.isValid) return true
   return false;
 }
 
 
 form.addEventListener('submit', (e) =>{
   e.preventDefault();
-  checkInputs();
-  let validation = validationClarification();
-
-  if(validation){
+  const validatedInputs = checkInputs();
+ 
+  if(validatedInputs){
     userData = loginButton.onsubmit = getUserData();
     console.table(userData);
   }
