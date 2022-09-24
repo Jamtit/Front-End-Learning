@@ -9,6 +9,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"> 
 
   <link rel="stylesheet" href="../dist/style.css">
+
+  <script src="js/script.js" defer></script>
   <title>Login</title>
 </head>
 <body>
@@ -18,18 +20,22 @@
         <img id="logo" src="../app/images/jetic-logo.55b8bab9.svg" alt="Logo">
       </div>
 
-      <form action="" class="login__form">
+      <form action="" class="login__form" id="form__login" onsubmit="getUserData()">
         <h3>Log in</h3>
         <p>Welcome to Caramel Cloud. Please put your login credentials below to start using the app.</p>
         <section class="login__form login__form--upper">
-          <p id="credentials">
+          <div class="credentials">
             <label for="mail"><span>E-mail</span></label>
             <input type="email" name="user-email" id="mail">
-          </p>
-          <p id="credentials">
+            <small class="msg_box"></small>
+          </div>
+
+          <div class="credentials">
             <label for="pas">Password </label>
-            <input type="password" name="password" id="pas">
-          </p>
+            <input type="password" name="password" id="pass">
+            <small class="msg_box"></small>
+            
+          </div>
           <p id="forgot">Forgot password?</p>
         </section>
         <section class="login__form login__form--lower">
@@ -38,7 +44,7 @@
               <input type="checkbox" name="remember-me" id="rmb-me">
               <label for="rmb-me">Remember me</label>
             </p>
-            <button class="button__login">Log in</button>
+            <button type="submit" id = "login__button" class="button__login">Log in</button>
           </div>
           <p>Don't have an account? <span>Sign up!</span></p>
         </section>
